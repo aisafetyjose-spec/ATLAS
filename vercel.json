@@ -1,0 +1,13 @@
+{
+  "buildCommand": "pip install -r requirements.txt",
+  "outputDirectory": ".",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/api.py"
+    }
+  ],
+  "env": {
+    "VELLUM_API_KEY": "@vellum_api_key"
+  }
+}
