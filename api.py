@@ -1,4 +1,4 @@
-"""FastAPI wrapper for ATLAS workflow - Vercel deployment.
+H"""FastAPI wrapper for ATLAS workflow - Vercel deployment.
 
 This is the root-level entry point for Vercel.
 It imports and wraps the ATLAS workflow package.
@@ -11,7 +11,16 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 
 # Import from ATLAS package
-from workflow import Workflow
+# Import from ATLAS package (same directory)
+try:
+        from workflow import Workflow
+        from inputs import Inputs
+except ImportError:
+        # Fallback for Vercel deployment
+        import sys
+        sys.path.insert(0, '.')
+        from workflow import Workflow
+        from inputs import Inputs
 from inputs import Inputs
 
 app = FastAPI(
